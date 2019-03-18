@@ -1,2 +1,3 @@
 # Face_Recognition
 Opencv实现 人脸识别
+要将haarcascade_frontalface_default.xml文件和Face_Recognition.py文件放在同一个目录内
