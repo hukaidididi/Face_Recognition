@@ -4,6 +4,9 @@ face_cascade = cv.CascadeClassifier('haarcascade_fontalface_alt.xml')
 face_cascade.load('F:\pydemo\OpenCv\haarcascade_frontalface_default.xml')
 eye_cascade = cv.CascadeClassifier('haarcascade_eye.xml')
 eye_cascade.load('F:\pydemo\OpenCv\haarcascade_eye.xml')
+smile_cascade = cv.CascadeClassifier('F:\pydemo\OpenCv\haarcascade_smile.xml')
+smile_cascade.load('haarcascade_smile.xml')
+
 
 
 
@@ -21,7 +24,11 @@ def detect(gray, frame):
         eyes = eye_cascade.detectMultiScale(roi_gray, 1.1, 22)
         for (ex, ey, ew, eh) in eyes:
             cv.rectangle(roi_color, (ex, ey), (ex+ew, ey+eh), (0, 0, 255), 2)
-    
+            
+        # 新增笑脸识别 
+        smiles = smile_cascade.detectMultiScale(roi_gray, 1.7, 22)
+        for (sx, sy, sw, sh) in smiles:
+            cv.rectangle(roi_color, (sx, sy), (sx+sw, sy+sh), (0, 255, 0), 2)
     return frame
 
 
